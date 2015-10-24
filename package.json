@@ -1,7 +1,7 @@
 {
-  "name": "vbar",
-  "version": "0.0.1",
-  "description": "a virtual bar implementation",
+  "name": "connect_io",
+  "version": "0.0.2",
+  "description": "connect_io",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
