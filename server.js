@@ -8,6 +8,9 @@ app.get('/', function(req, res) {
 
 io.on('connection', function(socket) {
   socket.emit('sys', {msg: 'new connection!'});
+  socket.on('passcode', function(passcode) {
+    socket.emit('passcode:resp', passcode === 'foobar' ? 'ok' : 'bad passcode');
+  });
 });
 
 server.listen(80);

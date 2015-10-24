@@ -27,6 +27,15 @@ socket.on('sys', function(msg) {
   console.log('new msg:');
   console.log(msg);
 });
+
+$('#btnSubmitUsername').click(function() {
+  socket.emit('passcode', $('passcode').val());
+});
+
+socket.on('passcode:resp', function(msg) {
+  console.log('passcode:resp:');
+  console.log(msg);
+});
 </script>
 </body>
 </html>
