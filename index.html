@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>vbar v0.0.1</title>
+  <title>connect_io v0.0.2</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -15,8 +15,8 @@
 </head>
 <body>
 
-<div class="container">
-  <input type="text" class="form-control" placeholder="username" id="username">
+<div class="container" id="gatekeeper">
+  <input type="text" class="form-control" placeholder="passcode" id="passcode">
   <button class="btn btn-default btn-block" id="btnSubmitUsername">submit</button>
 </div>
 
@@ -24,7 +24,16 @@
 var socket = io.connect('/');
 
 socket.on('sys', function(msg) {
-  console.log('new msg!');
+  console.log('new msg:');
+  console.log(msg);
+});
+
+$('#btnSubmitUsername').click(function() {
+  socket.emit('passcode', $('passcode').val());
+});
+
+socket.on('passcode:resp', function(msg) {
+  console.log('passcode:resp:');
   console.log(msg);
 });
 </script>
